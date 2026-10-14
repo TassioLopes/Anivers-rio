@@ -2,346 +2,821 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fotos da festa</title>
-<meta name="theme-color" content="#FFFFFF">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fotos · 50 anos da Raimunda</title>
+<meta name="description" content="Mande aqui as fotos e vídeos da festa de 50 anos da Raimunda.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Álbum dos 50 anos da Raimunda">
+<meta property="og:description" content="Mande aqui as fotos e vídeos que você fez na festa.">
+<meta name="theme-color" content="#FBF6F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#18120E" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23C9A048'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='28' fill='%23FFF6E0'%3E50%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Sacramento&display=swap">
 <style>
   :root {
-    --ink: #22202E;
-    --muted: #5B5866;
-    --line: #E6E3EC;
-    --soft: #F6F5F9;
-    --teal: #0F766E;
-    --teal-light: #1E9E8F;
-    --pink: #C2185B;
-    --error: #B42318;
-    --bg: #FFFFFF;
+    color-scheme: light dark;
+    --bg: #FBF6F0;
+    --surface: #FFFFFF;
+    --surface-2: #F3EADF;
+    --ink: #36291F;
+    --muted: #76624F;
+    --line: #EADCCC;
+    --gold-ink: #87621A;
+    --gold-1: #F3DA93;
+    --gold-2: #D6AE55;
+    --gold-3: #B4862C;
+    --on-gold: #3A2913;
+    --leaf: #4F6E3F;
+    --error: #A6402A;
+    --error-bg: #FBEAE4;
+    --shadow: 0 1px 2px rgba(80, 52, 30, .06), 0 8px 24px rgba(80, 52, 30, .08);
+    --radius: 22px;
+    --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --rounded: ui-rounded, "SF Pro Rounded", Quicksand, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #18120E;
+      --surface: #241B15;
+      --surface-2: #2F251D;
+      --ink: #F6EDE2;
+      --muted: #BCA996;
+      --line: #3A2E25;
+      --gold-ink: #EBCB7E;
+      --leaf: #A9C691;
+      --error: #F29A84;
+      --error-bg: #3A1F18;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .35);
+    }
+  }
+
   * { box-sizing: border-box; }
-  html, body {
+  html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+  body {
     margin: 0;
     background: var(--bg);
     color: var(--ink);
-    font-family: 'Bricolage Grotesque', 'Trebuchet MS', sans-serif;
-    -webkit-text-size-adjust: 100%;
+    font: 17px/1.45 var(--sans);
+    -webkit-font-smoothing: antialiased;
   }
-  main { max-width: 520px; margin: 0 auto; padding: 20px 20px 56px; }
-  .confete { display: block; width: 100%; height: auto; margin: 0 0 14px; }
+  main {
+    max-width: 480px;
+    margin: 0 auto;
+    padding:
+      max(8px, env(safe-area-inset-top))
+      max(16px, env(safe-area-inset-right))
+      max(40px, env(safe-area-inset-bottom))
+      max(16px, env(safe-area-inset-left));
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .oculto {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+  }
+  [hidden] { display: none !important; }
+
+  /* ---------- Topo ---------- */
+  .hero { display: block; width: 100%; height: auto; margin: 0 auto -8px; max-width: 420px; }
+  .baloes { filter: drop-shadow(0 4px 5px rgba(90, 60, 30, .18)); }
+  .neon { animation: acender 1.8s ease-out .2s both; }
+  @keyframes acender {
+    0% { opacity: 0; } 18% { opacity: .9; } 24% { opacity: .25; } 34% { opacity: 1; }
+    42% { opacity: .55; } 55%, 100% { opacity: 1; }
+  }
+
+  .titulo { display: flex; flex-direction: column; gap: 8px; text-align: center; }
   .eyebrow {
-    margin: 0 0 8px;
-    font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
-    color: var(--pink);
+    margin: 0;
+    font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--gold-ink);
   }
   h1 {
-    margin: 0 0 12px;
-    font-size: clamp(34px, 9.5vw, 46px); line-height: 1.04; font-weight: 800; letter-spacing: -.01em;
+    margin: 0;
+    font: 700 clamp(28px, 8.4vw, 34px)/1.1 var(--rounded);
+    letter-spacing: -.01em;
     text-wrap: balance;
   }
-  .lead { margin: 0 0 26px; font-size: 17px; line-height: 1.45; color: var(--muted); }
+  .lead { margin: 0; color: var(--muted); text-wrap: pretty; }
 
-  .campo { display: block; margin: 0 0 6px; font-size: 15px; font-weight: 600; }
-  .campo span { font-weight: 400; color: var(--muted); }
-  input[type="text"] {
-    width: 100%; padding: 13px 14px;
-    font: inherit; font-size: 17px; color: var(--ink);
-    background: #fff; border: 2px solid var(--line); border-radius: 14px; outline: none;
+  /* ---------- Cartões e grupos (estilo lista agrupada) ---------- */
+  .cartao {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
   }
-  input[type="text"]:focus { border-color: var(--teal-light); }
-  .ajuda { margin: 6px 0 20px; font-size: 13px; color: var(--muted); }
+  .grupo { display: flex; flex-direction: column; gap: 8px; }
+  .grupo-titulo, .grupo-nota { margin: 0 16px; font-size: 13px; color: var(--muted); }
+  .grupo-titulo { font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+  .campo { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 16px; }
+  .campo:focus-within { box-shadow: var(--shadow), 0 0 0 3px var(--gold-2); }
+  .campo svg { flex: none; color: var(--gold-ink); }
+  .campo input {
+    flex: 1; min-width: 0; padding: 14px 0;
+    font: inherit; color: inherit;
+    background: transparent; border: 0; outline: none;
+  }
+  .campo input::placeholder { color: var(--muted); opacity: .8; }
 
-  .btn-escolher {
+  /* ---------- Botões ---------- */
+  .acoes { display: flex; flex-direction: column; gap: 12px; }
+  .btn {
     display: flex; align-items: center; justify-content: center; gap: 10px;
-    width: 100%; min-height: 60px; padding: 16px 20px;
-    font: inherit; font-size: 19px; font-weight: 700; color: #fff;
-    background: var(--teal); border: 0; border-radius: 18px; cursor: pointer;
+    min-height: 56px; padding: 14px 20px;
+    font: 700 18px/1.2 var(--rounded);
+    border: 0; border-radius: 18px; cursor: pointer;
+    -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+    transition: transform .12s ease, filter .12s ease;
   }
-  .btn-escolher:active { transform: translateY(1px); }
-  .btn-escolher:focus-visible { outline: 3px solid var(--teal-light); outline-offset: 3px; }
-  .btn-escolher:disabled { opacity: .55; cursor: not-allowed; }
-  .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-
-  .resumo { margin: 16px 0 0; font-size: 15px; font-weight: 600; min-height: 1em; }
-  .manter { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
-
-  .lista { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-  .item {
-    display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 12px; align-items: center;
-    padding: 10px; border: 1px solid var(--line); border-radius: 14px;
+  .btn:active { transform: scale(.98); filter: brightness(.97); }
+  .btn:focus-visible { outline: 3px solid var(--gold-2); outline-offset: 3px; }
+  .btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+  .btn-ouro {
+    color: var(--on-gold);
+    background: linear-gradient(180deg, var(--gold-1) 0%, var(--gold-2) 55%, var(--gold-3) 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .65),
+      inset 0 -2px 0 rgba(120, 80, 20, .25),
+      0 6px 18px rgba(180, 134, 44, .35);
   }
-  .thumb {
-    width: 48px; height: 48px; border-radius: 10px; overflow: hidden;
+  .btn-claro { color: var(--ink); background: var(--surface); box-shadow: var(--shadow); }
+  .btn-pequeno { min-height: 44px; padding: 10px 16px; font-size: 16px; border-radius: 14px; }
+  .so-toque { display: none; }
+  @media (pointer: coarse) { .so-toque { display: flex; } }
+  .dica { margin: 0 16px; font-size: 13px; color: var(--muted); text-align: center; }
+
+  /* ---------- Progresso geral ---------- */
+  .progresso { display: flex; flex-direction: column; gap: 12px; padding: 16px; }
+  .prog-topo { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .prog-titulo { margin: 0; font: 700 18px/1.25 var(--rounded); }
+  .prog-detalhe { margin: 2px 0 0; font-size: 15px; color: var(--muted); }
+  .prog-pct {
+    flex: none; font: 700 18px/1.25 var(--rounded); color: var(--gold-ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .num { font-variant-numeric: tabular-nums; }
+  .barra { height: 8px; background: var(--surface-2); border-radius: 99px; overflow: hidden; }
+  .barra span {
+    display: block; width: 0; height: 100%; border-radius: inherit;
+    background: linear-gradient(90deg, var(--gold-2), var(--gold-1));
+    transition: width .3s ease;
+  }
+  .prog-nota { margin: 0; font-size: 13px; color: var(--muted); }
+  .progresso.feito { box-shadow: var(--shadow), 0 0 0 2px var(--gold-2), 0 0 28px rgba(232, 184, 80, .45); }
+  .progresso.feito .prog-titulo { color: var(--gold-ink); }
+  .progresso.festa { animation: brilho 1.4s ease-out; }
+  @keyframes brilho {
+    0% { box-shadow: var(--shadow), 0 0 0 2px var(--gold-2), 0 0 0 rgba(232, 184, 80, 0); }
+    40% { box-shadow: var(--shadow), 0 0 0 2px var(--gold-1), 0 0 44px rgba(255, 200, 90, .8); }
+  }
+  .prog-erro { margin: 0; font-size: 14px; color: var(--error); user-select: text; }
+
+  /* ---------- Grade de fotos ---------- */
+  .grade {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px;
+  }
+  @media (min-width: 420px) { .grade { gap: 8px; } }
+  .foto {
+    position: relative; aspect-ratio: 1; overflow: hidden;
+    border-radius: 14px; background: var(--surface-2);
+    animation: entrar .35s cubic-bezier(.2, .8, .2, 1) both;
+  }
+  @keyframes entrar { from { opacity: 0; transform: scale(.9); } }
+  .foto-midia {
+    position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
-    background: var(--soft); color: var(--muted);
+    color: var(--muted);
   }
-  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .nome { font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .status { margin-top: 2px; font-size: 13px; color: var(--muted); }
-  .barra { height: 6px; margin-top: 6px; background: var(--soft); border-radius: 99px; overflow: hidden; }
-  .barra span { display: block; width: 0; height: 100%; background: var(--teal-light); transition: width .25s ease; }
-  .item.ok .barra span { background: var(--teal); }
-  .item.ok .status { color: var(--teal); font-weight: 600; }
-  .item.erro .status { color: var(--error); }
-  .icone-ok { color: var(--teal); }
-  .btn-tentar {
-    min-height: 44px; padding: 8px 12px;
-    font: inherit; font-size: 14px; font-weight: 700; color: var(--pink);
-    background: none; border: 2px solid currentColor; border-radius: 12px; cursor: pointer;
+  .foto-midia img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .foto::after {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(30, 20, 12, .42); opacity: 0; transition: opacity .3s ease;
   }
+  .foto[data-estado="aguardando"]::after,
+  .foto[data-estado="enviando"]::after { opacity: 1; }
+  .foto-anel, .foto-ok, .foto-erro, .foto-aviso, .foto-selo { position: absolute; z-index: 1; }
+  .foto-anel { inset: 0; display: none; align-items: center; justify-content: center; }
+  [data-estado="aguardando"] .foto-anel,
+  [data-estado="enviando"] .foto-anel { display: flex; }
+  .foto-anel svg { width: 44%; height: auto; transform: rotate(-90deg); overflow: visible; }
+  .foto-anel circle { fill: none; stroke-width: 3.2; }
+  .trilho { stroke: rgba(255, 255, 255, .35); }
+  .carga {
+    stroke: #FFF3D6; stroke-linecap: round;
+    stroke-dasharray: 100; stroke-dashoffset: 100;
+    transition: stroke-dashoffset .2s linear;
+    filter: drop-shadow(0 0 3px rgba(255, 196, 92, .9));
+  }
+  [data-estado="aguardando"] .foto-anel svg { animation: pulsar 1.4s ease-in-out infinite; }
+  @keyframes pulsar { 50% { opacity: .45; } }
+  .foto-selo {
+    top: 6px; left: 6px; width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; background: rgba(30, 20, 12, .55);
+  }
+  .foto-ok {
+    right: 6px; bottom: 6px; width: 26px; height: 26px; border-radius: 50%;
+    display: none; align-items: center; justify-content: center;
+    color: #fff; background: #4F6E3F;
+    box-shadow: 0 0 0 2px #fff, 0 2px 6px rgba(0, 0, 0, .25);
+  }
+  [data-estado="enviado"] .foto-ok { display: flex; animation: pop .45s cubic-bezier(.2, 1.4, .4, 1) both; }
+  @keyframes pop { from { transform: scale(0); } }
+  .foto-erro {
+    inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    padding: 6px; border: 0; cursor: pointer;
+    font: 700 12px/1.2 var(--sans); color: #fff; text-align: center;
+    background: rgba(120, 36, 20, .66);
+  }
+  [data-estado="erro"] .foto-erro { display: flex; }
+  .foto-erro:focus-visible { outline: 3px solid var(--gold-2); outline-offset: -3px; }
+  .foto-aviso {
+    left: 0; right: 0; bottom: 0; display: none; padding: 6px;
+    font-size: 11px; font-weight: 700; text-align: center; color: #fff;
+    background: rgba(120, 36, 20, .78);
+  }
+  [data-estado="ignorado"] .foto-aviso { display: block; }
+  [data-estado="ignorado"] .foto-midia { opacity: .5; }
+
+  /* ---------- Álbum e avisos ---------- */
+  .album {
+    display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 12px 16px;
+    color: inherit; text-decoration: none;
+    -webkit-tap-highlight-color: transparent; transition: transform .12s ease;
+  }
+  .album:active { transform: scale(.99); }
+  .album:focus-visible { outline: 3px solid var(--gold-2); outline-offset: 3px; }
+  .album-icone {
+    flex: none; width: 40px; height: 40px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--on-gold); background: linear-gradient(180deg, var(--gold-1), var(--gold-2));
+  }
+  .album-texto { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .album-texto strong { font-weight: 600; }
+  .album-texto small { font-size: 13px; color: var(--muted); }
+  .album-seta { flex: none; color: var(--muted); }
 
   .aviso {
-    margin: 0 0 22px; padding: 14px 16px; font-size: 15px; line-height: 1.4;
-    background: #FFF4E5; border: 1px solid #F3C98B; border-radius: 14px; color: #6B3A00;
+    margin: 0; padding: 14px 16px; font-size: 15px;
+    color: var(--error); background: var(--error-bg); border-radius: var(--radius);
+    user-select: text;
   }
-  .obrigado {
-    margin: 22px 0 0; padding: 18px; text-align: center;
-    font-size: 18px; font-weight: 700; color: var(--teal);
-    background: #E9F6F4; border-radius: 16px;
+
+  /* Cantos contínuos onde o navegador já suporta */
+  @supports (corner-shape: squircle) {
+    .cartao, .aviso { border-radius: 34px; corner-shape: squircle; }
+    .btn { border-radius: 28px; corner-shape: squircle; }
+    .foto { border-radius: 22px; corner-shape: squircle; }
   }
-  .album { margin: 28px 0 0; text-align: center; font-size: 15px; }
-  .album a { color: var(--pink); font-weight: 600; }
-  .album a:hover { color: #8E1243; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
 </style>
 </head>
 <body>
 <main>
-  <svg class="confete" viewBox="0 0 480 60" aria-hidden="true">
-    <circle cx="14" cy="30" r="8" fill="#E5487D"/>
-    <rect x="52" y="16" width="9" height="22" rx="2" fill="#F6C343" transform="rotate(25 56 27)"/>
-    <polygon points="98,44 111,22 122,44" fill="#1E9E8F"/>
-    <path d="M150 32 q 9 -11 18 0 t 18 0 t 18 0" fill="none" stroke="#F28C28" stroke-width="4" stroke-linecap="round"/>
-    <circle cx="238" cy="18" r="6" fill="#1E9E8F"/>
-    <rect x="276" y="24" width="9" height="22" rx="2" fill="#E5487D" transform="rotate(-20 280 35)"/>
-    <circle cx="330" cy="30" r="8" fill="#F6C343"/>
-    <polygon points="368,26 384,12 390,34" fill="#F28C28"/>
-    <path d="M412 44 q 8 -10 16 0 t 16 0 t 16 0" fill="none" stroke="#1E9E8F" stroke-width="4" stroke-linecap="round"/>
+  <svg class="hero" viewBox="0 0 380 330" role="img" aria-labelledby="hero-titulo">
+    <title id="hero-titulo">Raimunda, 50 anos</title>
+    <defs>
+      <linearGradient id="g-arco" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#C9A27D"/>
+        <stop offset="1" stop-color="#A97F5B"/>
+      </linearGradient>
+      <radialGradient id="g-nude" cx=".35" cy=".3" r=".75">
+        <stop offset="0" stop-color="#FBF3EA"/>
+        <stop offset=".55" stop-color="#EAD8C4"/>
+        <stop offset="1" stop-color="#D3B99C"/>
+      </radialGradient>
+      <radialGradient id="g-pessego" cx=".35" cy=".3" r=".75">
+        <stop offset="0" stop-color="#FCEBDD"/>
+        <stop offset=".55" stop-color="#EFD2BB"/>
+        <stop offset="1" stop-color="#D9B194"/>
+      </radialGradient>
+      <radialGradient id="g-ouro" cx=".32" cy=".28" r=".8">
+        <stop offset="0" stop-color="#FFF4CF"/>
+        <stop offset=".25" stop-color="#EED08A"/>
+        <stop offset=".6" stop-color="#C79B3E"/>
+        <stop offset="1" stop-color="#8C6418"/>
+      </radialGradient>
+      <filter id="f-neon" x="-25%" y="-40%" width="150%" height="180%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="5.5" result="b1"/>
+        <feFlood flood-color="#FFB547"/>
+        <feComposite in2="b1" operator="in" result="brilho1"/>
+        <feGaussianBlur in="SourceAlpha" stdDeviation="1.4" result="b2"/>
+        <feFlood flood-color="#FFE3A0"/>
+        <feComposite in2="b2" operator="in" result="brilho2"/>
+        <feMerge>
+          <feMergeNode in="brilho1"/>
+          <feMergeNode in="brilho2"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <symbol id="s-brilho" viewBox="0 0 10 10">
+        <ellipse cx="3.4" cy="3" rx="1.6" ry="1" fill="#fff" opacity=".7" transform="rotate(-35 3.4 3)"/>
+      </symbol>
+    </defs>
+
+    <!-- tapete de palha -->
+    <ellipse cx="190" cy="316" rx="160" ry="12" fill="none" stroke="#D9C2A2" stroke-width="2.5" stroke-dasharray="2 5" opacity=".9"/>
+    <ellipse cx="190" cy="316" rx="128" ry="8" fill="none" stroke="#CDB28E" stroke-width="2" stroke-dasharray="3 4" opacity=".7"/>
+
+    <!-- arco -->
+    <path d="M85 312 V135 A105 105 0 0 1 295 135 V312 Z" fill="url(#g-arco)"/>
+    <path d="M93 312 V137 A97 97 0 0 1 287 137 V312" fill="none" stroke="#FFFFFF" stroke-opacity=".18" stroke-width="2"/>
+
+    <!-- balões -->
+    <g class="baloes">
+      <circle cx="48" cy="40" r="26" fill="url(#g-pessego)"/>
+      <circle cx="16" cy="84" r="14" fill="url(#g-ouro)"/>
+      <circle cx="88" cy="70" r="44" fill="url(#g-nude)"/>
+      <circle cx="112" cy="22" r="16" fill="url(#g-ouro)"/>
+      <circle cx="140" cy="36" r="28" fill="url(#g-ouro)"/>
+      <circle cx="182" cy="14" r="17" fill="url(#g-nude)"/>
+      <circle cx="160" cy="70" r="12" fill="url(#g-ouro)"/>
+      <circle cx="214" cy="30" r="22" fill="#FFFFFF" fill-opacity=".22" stroke="#FFFFFF" stroke-opacity=".8" stroke-width="1.2"/>
+      <path d="M200 22 a16 16 0 0 1 12 -8" fill="none" stroke="#FFFFFF" stroke-opacity=".9" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="74" cy="118" r="20" fill="url(#g-ouro)"/>
+      <circle cx="30" cy="124" r="18" fill="url(#g-pessego)"/>
+      <circle cx="54" cy="166" r="38" fill="url(#g-nude)"/>
+      <circle cx="18" cy="204" r="15" fill="url(#g-ouro)"/>
+      <circle cx="98" cy="196" r="17" fill="url(#g-pessego)"/>
+      <circle cx="50" cy="234" r="32" fill="url(#g-pessego)"/>
+      <circle cx="94" cy="250" r="16" fill="url(#g-ouro)"/>
+      <circle cx="22" cy="270" r="20" fill="url(#g-ouro)"/>
+      <circle cx="70" cy="290" r="28" fill="url(#g-nude)"/>
+      <circle cx="30" cy="300" r="16" fill="url(#g-nude)"/>
+      <circle cx="106" cy="300" r="12" fill="url(#g-ouro)"/>
+
+      <!-- rosas brancas -->
+      <g>
+        <ellipse cx="300" cy="172" rx="12" ry="5" fill="#6E8B57" transform="rotate(-30 300 172)"/>
+        <ellipse cx="342" cy="170" rx="12" ry="5" fill="#5F7A4A" transform="rotate(25 342 170)"/>
+        <ellipse cx="324" cy="150" rx="10" ry="4" fill="#7E9A66" transform="rotate(-70 324 150)"/>
+        <circle cx="312" cy="168" r="10" fill="#FFFDF8" stroke="#E9E1D3" stroke-width="1"/>
+        <circle cx="330" cy="162" r="11" fill="#FFFFFF" stroke="#E9E1D3" stroke-width="1"/>
+        <circle cx="322" cy="180" r="9" fill="#FFFDF8" stroke="#E9E1D3" stroke-width="1"/>
+        <path d="M312 163 a4 4 0 1 1 -3.5 6 M330 156 a5 5 0 1 1 -4.5 7 M322 176 a3.5 3.5 0 1 1 -3 5" fill="none" stroke="#E2D6C3" stroke-width="1.2" stroke-linecap="round"/>
+      </g>
+      <circle cx="296" cy="222" r="14" fill="url(#g-ouro)"/>
+      <circle cx="346" cy="222" r="18" fill="url(#g-ouro)"/>
+      <circle cx="320" cy="200" r="12" fill="url(#g-nude)"/>
+      <circle cx="320" cy="260" r="34" fill="url(#g-nude)"/>
+      <circle cx="356" cy="292" r="22" fill="url(#g-nude)"/>
+      <circle cx="298" cy="300" r="20" fill="url(#g-pessego)"/>
+      <circle cx="366" cy="252" r="12" fill="url(#g-pessego)"/>
+    </g>
+    <g aria-hidden="true">
+      <use href="#s-brilho" x="58" y="38" width="44" height="44"/>
+      <use href="#s-brilho" x="128" y="18" width="30" height="30"/>
+      <use href="#s-brilho" x="28" y="138" width="40" height="40"/>
+      <use href="#s-brilho" x="30" y="212" width="34" height="34"/>
+      <use href="#s-brilho" x="50" y="270" width="30" height="30"/>
+      <use href="#s-brilho" x="296" y="234" width="36" height="36"/>
+      <use href="#s-brilho" x="64" y="104" width="20" height="20"/>
+      <use href="#s-brilho" x="336" y="210" width="18" height="18"/>
+    </g>
+
+    <!-- letreiro em neon -->
+    <g class="neon" filter="url(#f-neon)">
+      <text x="192" y="158" text-anchor="middle" font-family="Sacramento, 'Segoe Script', cursive" font-size="60" fill="#FFF6E0">Raimunda</text>
+      <text x="190" y="290" text-anchor="middle" font-family="Quicksand, ui-rounded, 'Arial Rounded MT Bold', sans-serif" font-weight="700" font-size="122" letter-spacing="2" fill="none" stroke="#FFF3D1" stroke-width="2.6" stroke-linejoin="round">50</text>
+    </g>
   </svg>
 
-  <p class="eyebrow">Fotos da festa</p>
-  <h1>Compartilhe seus momentos</h1>
-  <p class="lead">Escolha as fotos e vídeos que você tirou. Eles vão direto para o álbum da festa.</p>
-
-  <div id="aviso-config" class="aviso" hidden>
-    Falta configurar o envio: cole a URL do Apps Script na linha <strong>UPLOAD_URL</strong> deste arquivo.
+  <div class="titulo">
+    <p class="eyebrow">Álbum da festa</p>
+    <h1>Mande suas fotos e vídeos</h1>
+    <p class="lead">Tudo vai direto para o álbum dos 50 anos da Raimunda. Pode mandar quantos quiser.</p>
   </div>
 
-  <label class="campo" for="nome">Seu nome <span>(opcional)</span></label>
-  <input id="nome" type="text" autocomplete="name" maxlength="40" placeholder="Ex.: Tia Marta">
-  <p class="ajuda">Assim dá para saber quem mandou cada foto.</p>
+  <p id="aviso-config" class="aviso" hidden>
+    Falta configurar o envio: cole a URL do Apps Script na linha <strong>UPLOAD_URL</strong> deste arquivo.
+  </p>
 
-  <input id="arquivos" class="oculto" type="file" accept="image/*,video/*" multiple tabindex="-1" aria-hidden="true">
-  <button id="btn-escolher" class="btn-escolher" type="button">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
-      <circle cx="12" cy="13.5" r="3.5"/>
-    </svg>
-    Escolher fotos e vídeos
-  </button>
+  <div class="grupo">
+    <label class="grupo-titulo" for="nome">Seu nome</label>
+    <div class="cartao campo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>
+      </svg>
+      <input id="nome" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="done" maxlength="40" placeholder="Ex.: Tia Marta" aria-describedby="nome-nota">
+    </div>
+    <p id="nome-nota" class="grupo-nota">Opcional. Escreva antes de escolher as fotos, assim dá para saber quem mandou cada uma.</p>
+  </div>
 
-  <p id="resumo" class="resumo" role="status" aria-live="polite"></p>
-  <p id="manter" class="manter" hidden>Deixe esta página aberta até terminar.</p>
-  <ul id="lista" class="lista"></ul>
-  <div id="obrigado" class="obrigado" hidden>Tudo enviado! Obrigado por compartilhar.</div>
+  <div class="acoes">
+    <input id="arq-galeria" class="oculto" type="file" accept="image/*,video/*" multiple tabindex="-1" aria-hidden="true">
+    <input id="arq-camera" class="oculto" type="file" accept="image/*,video/*" capture="environment" tabindex="-1" aria-hidden="true">
+    <button id="btn-galeria" class="btn btn-ouro" type="button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/>
+      </svg>
+      Escolher da galeria
+    </button>
+    <button id="btn-camera" class="btn btn-claro so-toque" type="button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/>
+      </svg>
+      Abrir a câmera
+    </button>
+    <p class="dica">Pode escolher várias de uma vez. No Wi-Fi o envio é mais rápido.</p>
+  </div>
 
-  
+  <section id="progresso" class="cartao progresso" aria-labelledby="prog-titulo" hidden>
+    <div class="prog-topo">
+      <div>
+        <p id="prog-titulo" class="prog-titulo"></p>
+        <p id="prog-detalhe" class="prog-detalhe num"></p>
+      </div>
+      <span id="prog-pct" class="prog-pct" aria-hidden="true"></span>
+    </div>
+    <div class="barra" aria-hidden="true"><span id="prog-barra"></span></div>
+    <p id="prog-nota" class="prog-nota">Deixe esta página aberta até terminar.</p>
+    <p id="prog-erro" class="prog-erro" hidden></p>
+    <button id="btn-tentar-todos" class="btn btn-claro btn-pequeno" type="button" hidden>Tentar de novo os que falharam</button>
+  </section>
+  <p id="anuncio" class="oculto" role="status" aria-live="polite"></p>
+
+  <ul id="grade" class="grade" aria-label="Arquivos escolhidos"></ul>
+
+  <a id="album" class="cartao album" href="#" target="_blank" rel="noopener" hidden>
+    <span class="album-icone" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>
+      </svg>
+    </span>
+    <span class="album-texto"><strong>Ver o álbum da festa</strong><small>Abre a pasta no Google Drive</small></span>
+    <svg class="album-seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+  </a>
+</main>
+
+<noscript><p class="aviso" style="max-width:480px;margin:0 auto 24px">Para mandar as fotos, ative o JavaScript do navegador.</p></noscript>
 
 <script>
+  'use strict';
+
   // ===== Configuração =====
   // Cole aqui a URL do App da Web do Apps Script (termina em /exec)
-  const UPLOAD_URL = 'https://script.google.com/macros/s/AKfycby_vkAf-bE9C7vHwgiRytG_195SjFDWmDpBiFFgeWOhwBW5Ow3GftqPzNqfGseLh8kgxA/exec';
+  const UPLOAD_URL = 'https://script.google.com/macros/s/AKfycbxR_2ayJZupyeI1pdR6wyr2_vajfgxigFYhdi2rcKkx7AuixIgjRaYY-GGhDZ28mgDQ1g/exec';
   // Link da pasta para os convidados verem o álbum (deixe '' para esconder)
   const ALBUM_URL = 'https://drive.google.com/drive/folders/1rvZWwTcUEJkvKtwg-bE3Nzt6PLjLAdh6';
   // =========================
 
-  const CHUNK_SIZE = 8 * 1024 * 1024;           // 8 MB por pedaço (múltiplo de 256 KB)
-  const MAX_FILE_SIZE = 2 * 1024 * 1024 * 1024; // 2 GB por arquivo
+  const PARALELOS = 3;                        // arquivos enviados ao mesmo tempo
+  const LOTE_SESSOES = 6;                     // sessões pedidas ao Apps Script numa chamada (o script aceita até 10)
+  const PEDACO_DIRETO = 16 * 1024 * 1024;     // pedaço do envio direto ao Drive (múltiplo de 256 KB)
+  const PEDACO_SCRIPT = 8 * 1024 * 1024;      // pedaço do caminho de reserva, pelo Apps Script
+  const MAX_FILE_SIZE = 2 * 1024 * 1024 * 1024;
+  const PARADO_MS = 45000;                    // sem progresso por esse tempo, a conexão é refeita
+  const CHAVE_NOME = 'aniversario-raimunda-50.nome';
   const TIPOS = {
     jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', gif: 'image/gif', webp: 'image/webp',
     heic: 'image/heic', heif: 'image/heif', mp4: 'video/mp4', mov: 'video/quicktime',
     m4v: 'video/x-m4v', '3gp': 'video/3gpp', webm: 'video/webm'
   };
+  const ICONES = {
+    foto: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg>',
+    video: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg>',
+    play: '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>',
+    ok: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    tentar: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/></svg>'
+  };
 
   const $ = (id) => document.getElementById(id);
   const configurado = /^https:\/\/script\.google\.com\/.+\/exec$/.test(UPLOAD_URL);
   const fila = [];
-  let ocupado = false;
+  let ativos = 0;
+  let pedidoSessoes = null;   // pedido de sessões em andamento (um por vez)
+  let scriptAntigo = false;   // o Apps Script ainda não tem o envio em lote
+  let modoDireto = true;      // vira false se o Drive recusar o envio direto do navegador
+  let diretoFuncionou = false;
+  let recusasDireto = 0;
   let wakeLock = null;
+  let resumoAgendado = false;
+  let tudoEnviadoAntes = false;
 
+  // ---------- Início ----------
   if (!configurado) {
     $('aviso-config').hidden = false;
-    $('btn-escolher').disabled = true;
+    $('btn-galeria').disabled = true;
+    $('btn-camera').disabled = true;
   }
   if (ALBUM_URL) {
     $('album').href = ALBUM_URL;
-    $('album-wrap').hidden = false;
+    $('album').hidden = false;
   }
-
-  $('btn-escolher').addEventListener('click', () => $('arquivos').click());
-  $('arquivos').addEventListener('change', (ev) => {
-    adicionar(Array.from(ev.target.files || []));
-    ev.target.value = '';
+  try { $('nome').value = localStorage.getItem(CHAVE_NOME) || ''; } catch (_) {}
+  $('nome').addEventListener('input', () => {
+    try { localStorage.setItem(CHAVE_NOME, $('nome').value.trim()); } catch (_) {}
   });
+  $('nome').addEventListener('keydown', (ev) => { if (ev.key === 'Enter') ev.target.blur(); });
+
+  for (const [botao, entrada] of [['btn-galeria', 'arq-galeria'], ['btn-camera', 'arq-camera']]) {
+    $(botao).addEventListener('click', () => $(entrada).click());
+    $(entrada).addEventListener('change', (ev) => {
+      adicionar(Array.from(ev.target.files || []));
+      ev.target.value = '';
+    });
+  }
+  $('btn-tentar-todos').addEventListener('click', () => tentarDeNovo(fila.filter((t) => t.estado === 'erro')));
 
   window.addEventListener('beforeunload', (ev) => {
-    if (ocupado) { ev.preventDefault(); ev.returnValue = ''; }
+    if (ativos > 0 || fila.some((t) => t.estado === 'aguardando')) { ev.preventDefault(); ev.returnValue = ''; }
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && ativos > 0) manterTelaAcesa(true);
   });
 
+  // ---------- Fila ----------
   function tipoDe(file) {
     if (file.type) return file.type;
     const ext = (file.name.split('.').pop() || '').toLowerCase();
     return TIPOS[ext] || '';
   }
 
-  function tamanho(bytes) {
-    if (bytes >= 1024 * 1024 * 1024) return (bytes / 1024 / 1024 / 1024).toFixed(1).replace('.', ',') + ' GB';
-    if (bytes >= 1024 * 1024) return (bytes / 1024 / 1024).toFixed(1).replace('.', ',') + ' MB';
-    return Math.max(1, Math.round(bytes / 1024)) + ' KB';
-  }
-
   function adicionar(files) {
     if (!files.length) return;
-    $('obrigado').hidden = true;
+    vibrar(10);
     for (const file of files) {
-      const tarefa = { file, estado: 'aguardando', el: criarItem(file) };
-      tarefa.el.querySelector('.btn-tentar').addEventListener('click', () => {
-        tarefa.estado = 'aguardando';
-        mostrar(tarefa, 0, 'Na fila');
-        processar();
-      });
-      $('lista').prepend(tarefa.el);
-      fila.push(tarefa);
-
-      const tipo = tipoDe(file);
-      if (!/^(image|video)\//.test(tipo)) {
-        tarefa.estado = 'ignorado';
-        mostrar(tarefa, 0, 'Esse tipo de arquivo não é aceito', 'erro', false);
-      } else if (file.size === 0 || file.size > MAX_FILE_SIZE) {
-        tarefa.estado = 'ignorado';
-        mostrar(tarefa, 0, file.size === 0 ? 'Arquivo vazio' : 'Arquivo grande demais (máx. 2 GB)', 'erro', false);
-      }
+      const t = { file, tipo: tipoDe(file), estado: 'aguardando', enviados: 0, sessao: null, erroSessao: null, erro: '', aviso: '' };
+      t.el = criarItem(t);
+      $('grade').prepend(t.el);
+      fila.push(t);
+      if (!/^(image|video)\//.test(t.tipo)) ignorar(t, 'Tipo não aceito');
+      else if (file.size === 0) ignorar(t, 'Arquivo vazio');
+      else if (file.size > MAX_FILE_SIZE) ignorar(t, 'Maior que 2 GB');
+      else { mostrar(t); agendarMiniatura(t); }
     }
-    atualizarResumo();
     processar();
   }
 
-  function criarItem(file) {
+  function criarItem(t) {
     const li = document.createElement('li');
-    li.className = 'item';
+    const video = /^video\//.test(t.tipo);
+    li.className = 'foto';
     li.innerHTML =
-      '<div class="thumb"></div>' +
-      '<div><div class="nome"></div><div class="status">Na fila</div><div class="barra"><span></span></div></div>' +
-      '<div class="acao"><button class="btn-tentar" type="button" hidden>Tentar de novo</button></div>';
-    li.querySelector('.nome').textContent = file.name + ' · ' + tamanho(file.size);
-
-    const thumb = li.querySelector('.thumb');
-    const icone = /^video\//.test(tipoDe(file))
-      ? '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg>'
-      : '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg>';
-    thumb.innerHTML = icone;
-    if (/^image\//.test(tipoDe(file)) && window.URL && URL.createObjectURL) {
-      const img = new Image();
-      img.alt = '';
-      img.onload = () => { thumb.innerHTML = ''; thumb.appendChild(img); };
-      img.src = URL.createObjectURL(file);
-    }
+      '<div class="foto-midia">' + (video ? ICONES.video : ICONES.foto) + '</div>' +
+      (video ? '<span class="foto-selo">' + ICONES.play + '</span>' : '') +
+      '<div class="foto-anel" aria-hidden="true"><svg viewBox="0 0 36 36"><circle class="trilho" cx="18" cy="18" r="15.9155"/><circle class="carga" cx="18" cy="18" r="15.9155"/></svg></div>' +
+      '<span class="foto-ok">' + ICONES.ok + '</span>' +
+      '<button class="foto-erro" type="button">' + ICONES.tentar + '<span>Tentar de novo</span></button>' +
+      '<span class="foto-aviso"></span>' +
+      '<span class="oculto foto-status"></span>';
+    li.querySelector('.foto-erro').addEventListener('click', () => tentarDeNovo([t]));
     return li;
   }
 
-  function mostrar(tarefa, fracao, texto, classe, podeTentar) {
-    const el = tarefa.el;
-    el.classList.remove('ok', 'erro');
-    if (classe) el.classList.add(classe);
-    el.querySelector('.barra span').style.width = Math.round(fracao * 100) + '%';
-    el.querySelector('.status').textContent = texto;
-    el.querySelector('.btn-tentar').hidden = !podeTentar;
+  function ignorar(t, aviso) {
+    t.estado = 'ignorado';
+    t.aviso = aviso;
+    t.el.querySelector('.foto-aviso').textContent = aviso;
+    mostrar(t);
+  }
+
+  function mostrar(t) {
+    const el = t.el;
+    el.dataset.estado = t.estado;
+    const pct = t.estado === 'enviado' ? 100 : Math.floor((t.enviados / (t.file.size || 1)) * 100);
+    el.querySelector('.carga').style.strokeDashoffset = String(100 - pct);
+    const textos = {
+      aguardando: 'na fila',
+      enviando: 'enviando, ' + pct + '%',
+      enviado: 'enviado',
+      erro: 'não foi enviado' + (t.erro ? ' (' + t.erro + ')' : ''),
+      ignorado: t.aviso
+    };
+    const texto = t.file.name + ': ' + textos[t.estado];
+    el.querySelector('.foto-status').textContent = texto;
+    el.title = texto;
+  }
+
+  function progresso(t, bytes) {
+    t.enviados = Math.max(0, Math.min(bytes, t.file.size));
+    mostrar(t);
+    agendarResumo();
+  }
+
+  function tentarDeNovo(lista) {
+    for (const t of lista) {
+      if (t.estado !== 'erro') continue;
+      t.estado = 'aguardando';
+      t.enviados = 0;
+      t.sessao = null;
+      t.erroSessao = null;
+      t.erro = '';
+      mostrar(t);
+    }
+    processar();
+  }
+
+  function processar() {
+    if (!configurado) return;
+    while (ativos < PARALELOS) {
+      const t = fila.find((x) => x.estado === 'aguardando');
+      if (!t) break;
+      t.estado = 'enviando';
+      ativos += 1;
+      mostrar(t);
+      enviar(t)
+        .then(() => { t.estado = 'enviado'; t.enviados = t.file.size; })
+        .catch((err) => { t.estado = 'erro'; t.erro = mensagem(err); })
+        .finally(() => {
+          ativos -= 1;
+          mostrar(t);
+          processar();
+        });
+    }
+    manterTelaAcesa(ativos > 0);
+    atualizarResumo();
+  }
+
+  // ---------- Resumo ----------
+  function agendarResumo() {
+    if (resumoAgendado) return;
+    resumoAgendado = true;
+    requestAnimationFrame(() => { resumoAgendado = false; atualizarResumo(); });
   }
 
   function atualizarResumo() {
     const validos = fila.filter((t) => t.estado !== 'ignorado');
+    const card = $('progresso');
+    if (!validos.length) { card.hidden = true; return; }
+    card.hidden = false;
+
     const enviados = validos.filter((t) => t.estado === 'enviado').length;
     const pendentes = validos.filter((t) => t.estado === 'aguardando' || t.estado === 'enviando').length;
-    const erros = validos.filter((t) => t.estado === 'erro').length;
-    let texto = '';
-    if (pendentes) texto = 'Enviando ' + Math.min(enviados + 1, validos.length) + ' de ' + validos.length + '…';
-    else if (validos.length) texto = enviados + ' de ' + validos.length + (validos.length === 1 ? ' enviado' : ' enviados');
-    if (!pendentes && erros) texto += ' · ' + erros + ' com erro';
-    $('resumo').textContent = texto;
-    $('manter').hidden = !pendentes;
-    $('obrigado').hidden = !(validos.length && enviados === validos.length);
-  }
-
-  async function processar() {
-    if (ocupado || !configurado) return;
-    ocupado = true;
-    await manterTelaAcesa(true);
-    try {
-      let tarefa;
-      while ((tarefa = fila.find((t) => t.estado === 'aguardando'))) {
-        tarefa.estado = 'enviando';
-        atualizarResumo();
-        try {
-          await enviarArquivo(tarefa.file, $('nome').value.trim(), (fracao) => {
-            mostrar(tarefa, fracao, 'Enviando… ' + Math.round(fracao * 100) + '%');
-          });
-          tarefa.estado = 'enviado';
-          mostrar(tarefa, 1, 'Enviado', 'ok', false);
-        } catch (err) {
-          tarefa.estado = 'erro';
-          mostrar(tarefa, 0, 'Não foi possível enviar. ' + (err && err.message ? err.message : ''), 'erro', true);
-        }
-        atualizarResumo();
-      }
-    } finally {
-      ocupado = false;
-      await manterTelaAcesa(false);
-      atualizarResumo();
+    const comErro = validos.filter((t) => t.estado === 'erro');
+    let total = 0;
+    let feitos = 0;
+    for (const t of validos) {
+      total += t.file.size;
+      if (t.estado === 'enviado') feitos += t.file.size;
+      else if (t.estado === 'enviando') feitos += t.enviados;
     }
+    const fracao = total ? feitos / total : 0;
+    const n = validos.length;
+    let titulo;
+    let detalhe;
+
+    if (pendentes) {
+      titulo = 'Enviando ' + n + (n === 1 ? ' arquivo' : ' arquivos');
+      detalhe = enviados + ' de ' + n + (n === 1 ? ' pronto' : ' prontos');
+    } else if (comErro.length) {
+      titulo = enviados + ' de ' + n + (n === 1 ? ' enviado' : ' enviados');
+      detalhe = comErro.length + (comErro.length === 1 ? ' não foi enviado' : ' não foram enviados');
+    } else {
+      titulo = 'Tudo enviado!';
+      detalhe = 'Obrigado por compartilhar. Se quiser, mande mais.';
+    }
+
+    const tudoEnviado = !pendentes && !comErro.length;
+    $('prog-titulo').textContent = titulo;
+    $('prog-detalhe').textContent = detalhe;
+    $('prog-pct').textContent = tudoEnviado ? '' : Math.floor((pendentes ? fracao : enviados / n) * 100) + '%';
+    $('prog-barra').style.width = (tudoEnviado ? 100 : (pendentes ? fracao : enviados / n) * 100) + '%';
+    $('prog-nota').hidden = !pendentes;
+    $('btn-tentar-todos').hidden = pendentes > 0 || !comErro.length;
+    const ultimoErro = comErro.length ? comErro[comErro.length - 1].erro : '';
+    $('prog-erro').hidden = pendentes > 0 || !ultimoErro;
+    $('prog-erro').textContent = ultimoErro ? 'Motivo: ' + ultimoErro : '';
+    card.classList.toggle('feito', tudoEnviado);
+
+    if (tudoEnviado && !tudoEnviadoAntes) {
+      card.classList.remove('festa');
+      void card.offsetWidth;
+      card.classList.add('festa');
+      vibrar([12, 70, 12]);
+    }
+    tudoEnviadoAntes = tudoEnviado;
+
+    const anuncio = titulo + '. ' + detalhe;
+    if ($('anuncio').textContent !== anuncio) $('anuncio').textContent = anuncio;
   }
 
-  async function manterTelaAcesa(ligar) {
-    try {
-      if (ligar && 'wakeLock' in navigator && !wakeLock) wakeLock = await navigator.wakeLock.request('screen');
-      if (!ligar && wakeLock) { await wakeLock.release(); wakeLock = null; }
-    } catch (_) { wakeLock = null; }
-  }
-
-  // Envia um arquivo em pedaços. Se a rede cair no meio, pergunta ao servidor
-  // até onde chegou e continua dali.
-  async function enviarArquivo(file, convidado, aoProgredir) {
-    const inicio = await chamar({
-      action: 'start',
-      name: file.name,
-      guest: convidado,
-      mimeType: tipoDe(file),
-      size: file.size
-    });
-    const uploadId = inicio.uploadId;
+  // ---------- Envio ----------
+  // Envia um arquivo em pedaços, direto para o Drive. Se a rede cair no meio,
+  // pergunta ao Apps Script até onde chegou e continua dali. Se o Drive recusar
+  // o envio direto, passa a usar o caminho pelo Apps Script, na mesma sessão.
+  async function enviar(t) {
+    const sessao = await obterSessao(t);
+    const total = t.file.size;
     let offset = 0;
     let falhas = 0;
-    aoProgredir(0);
+    progresso(t, 0);
 
-    while (true) {
-      let resposta;
+    for (;;) {
+      const direto = modoDireto && !!sessao.url;
+      let r;
       try {
-        const fim = Math.min(offset + CHUNK_SIZE, file.size);
-        const dados = await paraBase64(file.slice(offset, fim));
-        resposta = await chamar({ action: 'chunk', uploadId, start: offset, data: dados });
+        r = direto
+          ? await pedacoDireto(sessao.url, t.file, offset, (n) => progresso(t, offset + n))
+          : await pedacoScript(sessao.uploadId, t.file, offset);
+        if (direto && !diretoFuncionou) { diretoFuncionou = true; console.info('Envio direto ao Drive funcionando.'); }
         falhas = 0;
       } catch (err) {
         falhas += 1;
-        if (falhas > 5) throw err;
-        await esperar(1500 * falhas);
+        if (falhas > 6) throw err;
+        await esperar(direto && !diretoFuncionou ? 300 : 1000 * falhas);
         try {
-          resposta = await chamar({ action: 'status', uploadId });
+          r = await chamar({ action: 'status', uploadId: sessao.uploadId });
         } catch (_) {
+          progresso(t, offset);
           continue; // tenta reenviar o mesmo pedaço
         }
+        if (r.done || r.next > offset) falhas = 0;
+        else if (direto && !diretoFuncionou && ++recusasDireto >= 2) {
+          modoDireto = false;
+          console.info('O Drive recusou o envio direto; usando o caminho pelo Apps Script.');
+        }
       }
-      if (resposta.done) { aoProgredir(1); return; }
-      offset = resposta.next;
-      aoProgredir(offset / file.size);
+      if (r.done) { progresso(t, total); return; }
+      offset = r.next;
+      progresso(t, offset);
+    }
+  }
+
+  function pedacoDireto(url, file, inicio, aoProgredir) {
+    const total = file.size;
+    const fim = Math.min(inicio + PEDACO_DIRETO, total);
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      let ultimo = Date.now();
+      const vigia = setInterval(() => { if (Date.now() - ultimo > PARADO_MS) xhr.abort(); }, 5000);
+      const acabar = (fn, valor) => { clearInterval(vigia); fn(valor); };
+      xhr.open('PUT', url);
+      xhr.setRequestHeader('Content-Range', 'bytes ' + inicio + '-' + (fim - 1) + '/' + total);
+      xhr.upload.onprogress = (ev) => { ultimo = Date.now(); aoProgredir(ev.loaded); };
+      xhr.onload = () => {
+        if (xhr.status === 200 || xhr.status === 201) return acabar(resolve, { done: true });
+        if (xhr.status === 308) {
+          const m = /(?:^|\n)range:\s*bytes=\d+-(\d+)/i.exec(xhr.getAllResponseHeaders());
+          return acabar(resolve, { done: false, next: m ? Number(m[1]) + 1 : fim });
+        }
+        acabar(reject, new Error('O Drive respondeu ' + xhr.status + '.'));
+      };
+      xhr.onerror = () => acabar(reject, new Error('Falha de conexão.'));
+      xhr.onabort = () => acabar(reject, new Error('A conexão parou.'));
+      xhr.send(file.slice(inicio, fim));
+    });
+  }
+
+  async function pedacoScript(uploadId, file, inicio) {
+    const fim = Math.min(inicio + PEDACO_SCRIPT, file.size);
+    const dados = await paraBase64(file.slice(inicio, fim));
+    return chamar({ action: 'chunk', uploadId, start: inicio, data: dados });
+  }
+
+  // As sessões são pedidas em lote: uma chamada ao Apps Script abre várias de uma vez.
+  async function obterSessao(t) {
+    while (!t.sessao) {
+      if (t.erroSessao) {
+        const msg = t.erroSessao;
+        t.erroSessao = null;
+        throw new Error(msg);
+      }
+      if (!pedidoSessoes) pedidoSessoes = pedirSessoes(t).finally(() => { pedidoSessoes = null; });
+      await pedidoSessoes;
+    }
+    return t.sessao;
+  }
+
+  async function pedirSessoes(primeiro) {
+    const convidado = $('nome').value.trim();
+    if (!scriptAntigo) {
+      const lote = [primeiro].concat(fila.filter((x) =>
+        x !== primeiro && (x.estado === 'aguardando' || x.estado === 'enviando') && !x.sessao && !x.erroSessao
+      )).slice(0, LOTE_SESSOES);
+      try {
+        const resp = await tentarVarias(() => chamar({
+          action: 'start',
+          origin: location.origin,
+          guest: convidado,
+          files: lote.map((x) => ({ name: x.file.name, mimeType: x.tipo, size: x.file.size }))
+        }));
+        if (!Array.isArray(resp.sessions)) throw Object.assign(new Error('Resposta inesperada.'), { servidor: true });
+        lote.forEach((x, i) => {
+          const s = resp.sessions[i];
+          if (s && s.ok) x.sessao = { uploadId: s.uploadId, url: s.url || '' };
+          else x.erroSessao = (s && s.error) || 'O servidor não abriu o envio.';
+        });
+        return;
+      } catch (err) {
+        if (!err.servidor) { primeiro.erroSessao = mensagem(err); return; }
+        scriptAntigo = true; // Apps Script ainda na versão 1: abre uma sessão por vez
+      }
+    }
+    try {
+      const r = await tentarVarias(() => chamar({
+        action: 'start', name: primeiro.file.name, guest: convidado, mimeType: primeiro.tipo, size: primeiro.file.size
+      }));
+      primeiro.sessao = { uploadId: r.uploadId, url: '' };
+    } catch (err) {
+      primeiro.erroSessao = mensagem(err);
     }
   }
 
@@ -349,9 +824,19 @@
     // Corpo em texto puro: evita a verificação extra de CORS do navegador.
     const resp = await fetch(UPLOAD_URL, { method: 'POST', body: JSON.stringify(payload), redirect: 'follow' });
     if (!resp.ok) throw new Error('Erro de conexão (' + resp.status + ').');
-    const json = await resp.json();
-    if (!json.ok) throw new Error(json.error || 'Erro no servidor.');
+    let json;
+    try { json = await resp.json(); } catch (_) { throw new Error('Resposta inválida do servidor.'); }
+    if (!json.ok) throw Object.assign(new Error(json.error || 'Erro no servidor.'), { servidor: true });
     return json;
+  }
+
+  async function tentarVarias(fn) {
+    for (let i = 1; ; i++) {
+      try { return await fn(); } catch (err) {
+        if (err.servidor || i >= 3) throw err;
+        await esperar(1000 * i);
+      }
+    }
   }
 
   function paraBase64(blob) {
@@ -363,8 +848,98 @@
     });
   }
 
+  function mensagem(err) {
+    if (err instanceof TypeError) return 'Falha de conexão.';
+    return (err && err.message) || 'Erro desconhecido.';
+  }
+
   function esperar(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async function manterTelaAcesa(ligar) {
+    try {
+      if (ligar && 'wakeLock' in navigator && (!wakeLock || wakeLock.released)) {
+        wakeLock = await navigator.wakeLock.request('screen');
+      }
+      if (!ligar && wakeLock) { const w = wakeLock; wakeLock = null; await w.release(); }
+    } catch (_) { wakeLock = null; }
+  }
+
+  function vibrar(padrao) {
+    try { if (navigator.vibrate) navigator.vibrate(padrao); } catch (_) {}
+  }
+
+  // ---------- Miniaturas ----------
+  // Feitas uma de cada vez e reduzidas, para não pesar na memória do celular.
+  let cadeiaMiniaturas = Promise.resolve();
+
+  function agendarMiniatura(t) {
+    cadeiaMiniaturas = cadeiaMiniaturas
+      .then(() => (/^video\//.test(t.tipo) ? miniaturaVideo(t.file) : miniaturaImagem(t.file)))
+      .then((url) => {
+        if (!url) return;
+        const img = new Image();
+        img.alt = '';
+        img.decoding = 'async';
+        img.onload = () => t.el.querySelector('.foto-midia').replaceChildren(img);
+        img.src = url;
+      })
+      .catch(() => {});
+  }
+
+  function miniaturaImagem(file) {
+    return new Promise((resolve) => {
+      const url = URL.createObjectURL(file);
+      const img = new Image();
+      const fim = (res) => { clearTimeout(timer); URL.revokeObjectURL(url); resolve(res); };
+      const timer = setTimeout(() => fim(null), 8000);
+      img.onload = () => recortar(img, img.naturalWidth, img.naturalHeight).then(fim, () => fim(null));
+      img.onerror = () => fim(null);
+      img.src = url;
+    });
+  }
+
+  function miniaturaVideo(file) {
+    return new Promise((resolve) => {
+      const url = URL.createObjectURL(file);
+      const v = document.createElement('video');
+      let feito = false;
+      const fim = (res) => {
+        if (feito) return;
+        feito = true;
+        clearTimeout(timer);
+        v.removeAttribute('src');
+        v.load();
+        URL.revokeObjectURL(url);
+        resolve(res);
+      };
+      const timer = setTimeout(() => fim(null), 6000);
+      v.muted = true;
+      v.playsInline = true;
+      v.preload = 'metadata';
+      v.onloadedmetadata = () => {
+        try { v.currentTime = Math.min(0.5, (v.duration || 1) / 3); } catch (_) { fim(null); }
+      };
+      v.onseeked = () => recortar(v, v.videoWidth, v.videoHeight).then(fim, () => fim(null));
+      v.onerror = () => fim(null);
+      v.src = url;
+    });
+  }
+
+  function recortar(fonte, w, h) {
+    return new Promise((resolve) => {
+      if (!w || !h) return resolve(null);
+      const lado = 240;
+      const escala = Math.max(lado / w, lado / h);
+      const canvas = document.createElement('canvas');
+      canvas.width = lado;
+      canvas.height = lado;
+      const ctx = canvas.getContext('2d');
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(fonte, (lado - w * escala) / 2, (lado - h * escala) / 2, w * escala, h * escala);
+      canvas.toBlob((blob) => resolve(blob ? URL.createObjectURL(blob) : null), 'image/jpeg', 0.75);
+    });
   }
 </script>
 </body>
