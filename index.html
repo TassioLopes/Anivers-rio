@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fotos da festa</title>
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap">
+<style>
+  :root {
+    --ink: #22202E;
+    --muted: #5B5866;
+    --line: #E6E3EC;
+    --soft: #F6F5F9;
+    --teal: #0F766E;
+    --teal-light: #1E9E8F;
+    --pink: #C2185B;
+    --error: #B42318;
+    --bg: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Bricolage Grotesque', 'Trebuchet MS', sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 520px; margin: 0 auto; padding: 20px 20px 56px; }
+  .confete { display: block; width: 100%; height: auto; margin: 0 0 14px; }
+  .eyebrow {
+    margin: 0 0 8px;
+    font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--pink);
+  }
+  h1 {
+    margin: 0 0 12px;
+    font-size: clamp(34px, 9.5vw, 46px); line-height: 1.04; font-weight: 800; letter-spacing: -.01em;
+    text-wrap: balance;
+  }
+  .lead { margin: 0 0 26px; font-size: 17px; line-height: 1.45; color: var(--muted); }
+
+  .campo { display: block; margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+  .campo span { font-weight: 400; color: var(--muted); }
+  input[type="text"] {
+    width: 100%; padding: 13px 14px;
+    font: inherit; font-size: 17px; color: var(--ink);
+    background: #fff; border: 2px solid var(--line); border-radius: 14px; outline: none;
+  }
+  input[type="text"]:focus { border-color: var(--teal-light); }
+  .ajuda { margin: 6px 0 20px; font-size: 13px; color: var(--muted); }
+
+  .btn-escolher {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; min-height: 60px; padding: 16px 20px;
+    font: inherit; font-size: 19px; font-weight: 700; color: #fff;
+    background: var(--teal); border: 0; border-radius: 18px; cursor: pointer;
+  }
+  .btn-escolher:active { transform: translateY(1px); }
+  .btn-escolher:focus-visible { outline: 3px solid var(--teal-light); outline-offset: 3px; }
+  .btn-escolher:disabled { opacity: .55; cursor: not-allowed; }
+  .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .resumo { margin: 16px 0 0; font-size: 15px; font-weight: 600; min-height: 1em; }
+  .manter { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+
+  .lista { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .item {
+    display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 12px; align-items: center;
+    padding: 10px; border: 1px solid var(--line); border-radius: 14px;
+  }
+  .thumb {
+    width: 48px; height: 48px; border-radius: 10px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--soft); color: var(--muted);
+  }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .nome { font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .status { margin-top: 2px; font-size: 13px; color: var(--muted); }
+  .barra { height: 6px; margin-top: 6px; background: var(--soft); border-radius: 99px; overflow: hidden; }
+  .barra span { display: block; width: 0; height: 100%; background: var(--teal-light); transition: width .25s ease; }
+  .item.ok .barra span { background: var(--teal); }
+  .item.ok .status { color: var(--teal); font-weight: 600; }
+  .item.erro .status { color: var(--error); }
+  .icone-ok { color: var(--teal); }
+  .btn-tentar {
+    min-height: 44px; padding: 8px 12px;
+    font: inherit; font-size: 14px; font-weight: 700; color: var(--pink);
+    background: none; border: 2px solid currentColor; border-radius: 12px; cursor: pointer;
+  }
+
+  .aviso {
+    margin: 0 0 22px; padding: 14px 16px; font-size: 15px; line-height: 1.4;
+    background: #FFF4E5; border: 1px solid #F3C98B; border-radius: 14px; color: #6B3A00;
+  }
+  .obrigado {
+    margin: 22px 0 0; padding: 18px; text-align: center;
+    font-size: 18px; font-weight: 700; color: var(--teal);
+    background: #E9F6F4; border-radius: 16px;
+  }
+  .album { margin: 28px 0 0; text-align: center; font-size: 15px; }
+  .album a { color: var(--pink); font-weight: 600; }
+  .album a:hover { color: #8E1243; }
+</style>
+</head>
+<body>
+<main>
+  <svg class="confete" viewBox="0 0 480 60" aria-hidden="true">
+    <circle cx="14" cy="30" r="8" fill="#E5487D"/>
+    <rect x="52" y="16" width="9" height="22" rx="2" fill="#F6C343" transform="rotate(25 56 27)"/>
+    <polygon points="98,44 111,22 122,44" fill="#1E9E8F"/>
+    <path d="M150 32 q 9 -11 18 0 t 18 0 t 18 0" fill="none" stroke="#F28C28" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="238" cy="18" r="6" fill="#1E9E8F"/>
+    <rect x="276" y="24" width="9" height="22" rx="2" fill="#E5487D" transform="rotate(-20 280 35)"/>
+    <circle cx="330" cy="30" r="8" fill="#F6C343"/>
+    <polygon points="368,26 384,12 390,34" fill="#F28C28"/>
+    <path d="M412 44 q 8 -10 16 0 t 16 0 t 16 0" fill="none" stroke="#1E9E8F" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+
+  <p class="eyebrow">Fotos da festa</p>
+  <h1>Compartilhe seus momentos</h1>
+  <p class="lead">Escolha as fotos e vídeos que você tirou. Eles vão direto para o álbum da festa.</p>
+
+  <div id="aviso-config" class="aviso" hidden>
+    Falta configurar o envio: cole a URL do Apps Script na linha <strong>UPLOAD_URL</strong> deste arquivo.
+  </div>
+
+  <label class="campo" for="nome">Seu nome <span>(opcional)</span></label>
+  <input id="nome" type="text" autocomplete="name" maxlength="40" placeholder="Ex.: Tia Marta">
+  <p class="ajuda">Assim dá para saber quem mandou cada foto.</p>
+
+  <input id="arquivos" class="oculto" type="file" accept="image/*,video/*" multiple tabindex="-1" aria-hidden="true">
+  <button id="btn-escolher" class="btn-escolher" type="button">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+      <circle cx="12" cy="13.5" r="3.5"/>
+    </svg>
+    Escolher fotos e vídeos
+  </button>
+
+  <p id="resumo" class="resumo" role="status" aria-live="polite"></p>
+  <p id="manter" class="manter" hidden>Deixe esta página aberta até terminar.</p>
+  <ul id="lista" class="lista"></ul>
+  <div id="obrigado" class="obrigado" hidden>Tudo enviado! Obrigado por compartilhar.</div>
+
+  <p id="album-wrap" class="album" hidden><a id="album" href="#" target="_blank" rel="noopener">Ver o álbum da festa</a></p>
+</main>
+
+<script>
+  // ===== Configuração =====
+  // Cole aqui a URL do App da Web do Apps Script (termina em /exec)
+  const UPLOAD_URL = 'COLE_AQUI_A_URL_DO_APPS_SCRIPT';
+  // Link da pasta para os convidados verem o álbum (deixe '' para esconder)
+  const ALBUM_URL = 'https://drive.google.com/drive/folders/1L-m3fiL1nc2iDEnqjltyEfZzOKalkxeU';
+  // =========================
+
+  const CHUNK_SIZE = 8 * 1024 * 1024;           // 8 MB por pedaço (múltiplo de 256 KB)
+  const MAX_FILE_SIZE = 2 * 1024 * 1024 * 1024; // 2 GB por arquivo
+  const TIPOS = {
+    jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', gif: 'image/gif', webp: 'image/webp',
+    heic: 'image/heic', heif: 'image/heif', mp4: 'video/mp4', mov: 'video/quicktime',
+    m4v: 'video/x-m4v', '3gp': 'video/3gpp', webm: 'video/webm'
+  };
+
+  const $ = (id) => document.getElementById(id);
+  const configurado = /^https:\/\/script\.google\.com\/.+\/exec$/.test(UPLOAD_URL);
+  const fila = [];
+  let ocupado = false;
+  let wakeLock = null;
+
+  if (!configurado) {
+    $('aviso-config').hidden = false;
+    $('btn-escolher').disabled = true;
+  }
+  if (ALBUM_URL) {
+    $('album').href = ALBUM_URL;
+    $('album-wrap').hidden = false;
+  }
+
+  $('btn-escolher').addEventListener('click', () => $('arquivos').click());
+  $('arquivos').addEventListener('change', (ev) => {
+    adicionar(Array.from(ev.target.files || []));
+    ev.target.value = '';
+  });
+
+  window.addEventListener('beforeunload', (ev) => {
+    if (ocupado) { ev.preventDefault(); ev.returnValue = ''; }
+  });
+
+  function tipoDe(file) {
+    if (file.type) return file.type;
+    const ext = (file.name.split('.').pop() || '').toLowerCase();
+    return TIPOS[ext] || '';
+  }
+
+  function tamanho(bytes) {
+    if (bytes >= 1024 * 1024 * 1024) return (bytes / 1024 / 1024 / 1024).toFixed(1).replace('.', ',') + ' GB';
+    if (bytes >= 1024 * 1024) return (bytes / 1024 / 1024).toFixed(1).replace('.', ',') + ' MB';
+    return Math.max(1, Math.round(bytes / 1024)) + ' KB';
+  }
+
+  function adicionar(files) {
+    if (!files.length) return;
+    $('obrigado').hidden = true;
+    for (const file of files) {
+      const tarefa = { file, estado: 'aguardando', el: criarItem(file) };
+      tarefa.el.querySelector('.btn-tentar').addEventListener('click', () => {
+        tarefa.estado = 'aguardando';
+        mostrar(tarefa, 0, 'Na fila');
+        processar();
+      });
+      $('lista').prepend(tarefa.el);
+      fila.push(tarefa);
+
+      const tipo = tipoDe(file);
+      if (!/^(image|video)\//.test(tipo)) {
+        tarefa.estado = 'ignorado';
+        mostrar(tarefa, 0, 'Esse tipo de arquivo não é aceito', 'erro', false);
+      } else if (file.size === 0 || file.size > MAX_FILE_SIZE) {
+        tarefa.estado = 'ignorado';
+        mostrar(tarefa, 0, file.size === 0 ? 'Arquivo vazio' : 'Arquivo grande demais (máx. 2 GB)', 'erro', false);
+      }
+    }
+    atualizarResumo();
+    processar();
+  }
+
+  function criarItem(file) {
+    const li = document.createElement('li');
+    li.className = 'item';
+    li.innerHTML =
+      '<div class="thumb"></div>' +
+      '<div><div class="nome"></div><div class="status">Na fila</div><div class="barra"><span></span></div></div>' +
+      '<div class="acao"><button class="btn-tentar" type="button" hidden>Tentar de novo</button></div>';
+    li.querySelector('.nome').textContent = file.name + ' · ' + tamanho(file.size);
+
+    const thumb = li.querySelector('.thumb');
+    const icone = /^video\//.test(tipoDe(file))
+      ? '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg>'
+      : '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg>';
+    thumb.innerHTML = icone;
+    if (/^image\//.test(tipoDe(file)) && window.URL && URL.createObjectURL) {
+      const img = new Image();
+      img.alt = '';
+      img.onload = () => { thumb.innerHTML = ''; thumb.appendChild(img); };
+      img.src = URL.createObjectURL(file);
+    }
+    return li;
+  }
+
+  function mostrar(tarefa, fracao, texto, classe, podeTentar) {
+    const el = tarefa.el;
+    el.classList.remove('ok', 'erro');
+    if (classe) el.classList.add(classe);
+    el.querySelector('.barra span').style.width = Math.round(fracao * 100) + '%';
+    el.querySelector('.status').textContent = texto;
+    el.querySelector('.btn-tentar').hidden = !podeTentar;
+  }
+
+  function atualizarResumo() {
+    const validos = fila.filter((t) => t.estado !== 'ignorado');
+    const enviados = validos.filter((t) => t.estado === 'enviado').length;
+    const pendentes = validos.filter((t) => t.estado === 'aguardando' || t.estado === 'enviando').length;
+    const erros = validos.filter((t) => t.estado === 'erro').length;
+    let texto = '';
+    if (pendentes) texto = 'Enviando ' + Math.min(enviados + 1, validos.length) + ' de ' + validos.length + '…';
+    else if (validos.length) texto = enviados + ' de ' + validos.length + (validos.length === 1 ? ' enviado' : ' enviados');
+    if (!pendentes && erros) texto += ' · ' + erros + ' com erro';
+    $('resumo').textContent = texto;
+    $('manter').hidden = !pendentes;
+    $('obrigado').hidden = !(validos.length && enviados === validos.length);
+  }
+
+  async function processar() {
+    if (ocupado || !configurado) return;
+    ocupado = true;
+    await manterTelaAcesa(true);
+    try {
+      let tarefa;
+      while ((tarefa = fila.find((t) => t.estado === 'aguardando'))) {
+        tarefa.estado = 'enviando';
+        atualizarResumo();
+        try {
+          await enviarArquivo(tarefa.file, $('nome').value.trim(), (fracao) => {
+            mostrar(tarefa, fracao, 'Enviando… ' + Math.round(fracao * 100) + '%');
+          });
+          tarefa.estado = 'enviado';
+          mostrar(tarefa, 1, 'Enviado', 'ok', false);
+        } catch (err) {
+          tarefa.estado = 'erro';
+          mostrar(tarefa, 0, 'Não foi possível enviar. ' + (err && err.message ? err.message : ''), 'erro', true);
+        }
+        atualizarResumo();
+      }
+    } finally {
+      ocupado = false;
+      await manterTelaAcesa(false);
+      atualizarResumo();
+    }
+  }
+
+  async function manterTelaAcesa(ligar) {
+    try {
+      if (ligar && 'wakeLock' in navigator && !wakeLock) wakeLock = await navigator.wakeLock.request('screen');
+      if (!ligar && wakeLock) { await wakeLock.release(); wakeLock = null; }
+    } catch (_) { wakeLock = null; }
+  }
+
+  // Envia um arquivo em pedaços. Se a rede cair no meio, pergunta ao servidor
+  // até onde chegou e continua dali.
+  async function enviarArquivo(file, convidado, aoProgredir) {
+    const inicio = await chamar({
+      action: 'start',
+      name: file.name,
+      guest: convidado,
+      mimeType: tipoDe(file),
+      size: file.size
+    });
+    const uploadId = inicio.uploadId;
+    let offset = 0;
+    let falhas = 0;
+    aoProgredir(0);
+
+    while (true) {
+      let resposta;
+      try {
+        const fim = Math.min(offset + CHUNK_SIZE, file.size);
+        const dados = await paraBase64(file.slice(offset, fim));
+        resposta = await chamar({ action: 'chunk', uploadId, start: offset, data: dados });
+        falhas = 0;
+      } catch (err) {
+        falhas += 1;
+        if (falhas > 5) throw err;
+        await esperar(1500 * falhas);
+        try {
+          resposta = await chamar({ action: 'status', uploadId });
+        } catch (_) {
+          continue; // tenta reenviar o mesmo pedaço
+        }
+      }
+      if (resposta.done) { aoProgredir(1); return; }
+      offset = resposta.next;
+      aoProgredir(offset / file.size);
+    }
+  }
+
+  async function chamar(payload) {
+    // Corpo em texto puro: evita a verificação extra de CORS do navegador.
+    const resp = await fetch(UPLOAD_URL, { method: 'POST', body: JSON.stringify(payload), redirect: 'follow' });
+    if (!resp.ok) throw new Error('Erro de conexão (' + resp.status + ').');
+    const json = await resp.json();
+    if (!json.ok) throw new Error(json.error || 'Erro no servidor.');
+    return json;
+  }
+
+  function paraBase64(blob) {
+    return new Promise((resolve, reject) => {
+      const leitor = new FileReader();
+      leitor.onload = () => resolve(String(leitor.result).split(',')[1] || '');
+      leitor.onerror = () => reject(leitor.error || new Error('Não foi possível ler o arquivo.'));
+      leitor.readAsDataURL(blob);
+    });
+  }
+
+  function esperar(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+</script>
+</body>
+</html>
