@@ -242,24 +242,7 @@
   [data-estado="ignorado"] .foto-aviso { display: block; }
   [data-estado="ignorado"] .foto-midia { opacity: .5; }
 
-  /* ---------- Álbum e avisos ---------- */
-  .album {
-    display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 12px 16px;
-    color: inherit; text-decoration: none;
-    -webkit-tap-highlight-color: transparent; transition: transform .12s ease;
-  }
-  .album:active { transform: scale(.99); }
-  .album:focus-visible { outline: 3px solid var(--gold-2); outline-offset: 3px; }
-  .album-icone {
-    flex: none; width: 40px; height: 40px; border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--on-gold); background: linear-gradient(180deg, var(--gold-1), var(--gold-2));
-  }
-  .album-texto { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-  .album-texto strong { font-weight: 600; }
-  .album-texto small { font-size: 13px; color: var(--muted); }
-  .album-seta { flex: none; color: var(--muted); }
-
+  /* ---------- Avisos ---------- */
   .aviso {
     margin: 0; padding: 14px 16px; font-size: 15px;
     color: var(--error); background: var(--error-bg); border-radius: var(--radius);
@@ -443,16 +426,6 @@
   <p id="anuncio" class="oculto" role="status" aria-live="polite"></p>
 
   <ul id="grade" class="grade" aria-label="Arquivos escolhidos"></ul>
-
-  <a id="album" class="cartao album" href="#" target="_blank" rel="noopener" hidden>
-    <span class="album-icone" aria-hidden="true">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>
-      </svg>
-    </span>
-    <span class="album-texto"><strong>Ver o álbum da festa</strong><small>Abre a pasta no Google Drive</small></span>
-    <svg class="album-seta" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-  </a>
 </main>
 
 <noscript><p class="aviso" style="max-width:480px;margin:0 auto 24px">Para mandar as fotos, ative o JavaScript do navegador.</p></noscript>
@@ -462,9 +435,7 @@
 
   // ===== Configuração =====
   // Cole aqui a URL do App da Web do Apps Script (termina em /exec)
-  const UPLOAD_URL = 'https://script.google.com/macros/s/AKfycbxR_2ayJZupyeI1pdR6wyr2_vajfgxigFYhdi2rcKkx7AuixIgjRaYY-GGhDZ28mgDQ1g/exec';
-  // Link da pasta para os convidados verem o álbum (deixe '' para esconder)
-  const ALBUM_URL = 'https://drive.google.com/drive/folders/1rvZWwTcUEJkvKtwg-bE3Nzt6PLjLAdh6';
+  const UPLOAD_URL = 'https://script.google.com/macros/s/AKfycby_vkAf-bE9C7vHwgiRytG_195SjFDWmDpBiFFgeWOhwBW5Ow3GftqPzNqfGseLh8kgxA/exec';
   // =========================
 
   const PARALELOS = 3;                        // arquivos enviados ao mesmo tempo
@@ -505,10 +476,6 @@
     $('aviso-config').hidden = false;
     $('btn-galeria').disabled = true;
     $('btn-camera').disabled = true;
-  }
-  if (ALBUM_URL) {
-    $('album').href = ALBUM_URL;
-    $('album').hidden = false;
   }
   try { $('nome').value = localStorage.getItem(CHAVE_NOME) || ''; } catch (_) {}
   $('nome').addEventListener('input', () => {
@@ -725,19 +692,25 @@
         try {
           r = await chamar({ action: 'status', uploadId: sessao.uploadId });
         } catch (_) {
+          if (direto) recusouDireto();
           progresso(t, offset);
           continue; // tenta reenviar o mesmo pedaço
         }
         if (r.done || r.next > offset) falhas = 0;
-        else if (direto && !diretoFuncionou && ++recusasDireto >= 2) {
-          modoDireto = false;
-          console.info('O Drive recusou o envio direto; usando o caminho pelo Apps Script.');
-        }
+        else if (direto) recusouDireto();
       }
       if (r.done) { progresso(t, total); return; }
       offset = r.next;
       progresso(t, offset);
     }
+  }
+
+  // Duas falhas do envio direto antes de ele funcionar uma vez: o Drive não
+  // aceita o navegador, e o resto vai pelo Apps Script.
+  function recusouDireto() {
+    if (diretoFuncionou || !modoDireto || ++recusasDireto < 2) return;
+    modoDireto = false;
+    console.info('O Drive recusou o envio direto; usando o caminho pelo Apps Script.');
   }
 
   function pedacoDireto(url, file, inicio, aoProgredir) {
@@ -849,7 +822,9 @@
   }
 
   function mensagem(err) {
-    if (err instanceof TypeError) return 'Falha de conexão.';
+    if (err instanceof TypeError) {
+      return navigator.onLine === false ? 'Sem internet no momento.' : 'Não consegui falar com o servidor das fotos.';
+    }
     return (err && err.message) || 'Erro desconhecido.';
   }
 
